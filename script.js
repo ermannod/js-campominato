@@ -46,11 +46,14 @@ console.log('Mine list: ' + minesList);
 
 var plays = [];
 var count = 0;
+var safe = false;
 for (var j = 0; plays.length < (max - 16); j++) {
   var playerNum = parseInt(prompt('Enter a number between 1 and ' + max));
   if (minesList.includes(playerNum) || plays.includes(playerNum)){
-    alert('You hit a mine! GAME OVER');
-    alert('You made ' + plays.length + ' correct moves');// if mine is entered
+    alert('GAME OVER! You hit a mine! You made ' + plays.length + ' correct moves. Press OK to restart.');
+    // if mine is entered
+    window.location.reload()
+    break;
     console.log('Game Over');
   } else if (!playerNum){
     alert('Please enter a number'); // if a nomber is not entered
