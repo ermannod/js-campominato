@@ -45,8 +45,6 @@ for (var i = 0; minesList.length < 16 ; i++) {
 console.log('Mine list: ' + minesList);
 
 var plays = [];
-var count = 0;
-var safe = false;
 for (var j = 0; plays.length < (max - 16); j++) {
   var playerNum = parseInt(prompt('Enter a number between 1 and ' + max));
   if (minesList.includes(playerNum) || plays.includes(playerNum)){
@@ -54,9 +52,10 @@ for (var j = 0; plays.length < (max - 16); j++) {
     // if mine is entered
     window.location.reload()
     break;
-    console.log('Game Over');
   } else if (!playerNum){
     alert('Please enter a number'); // if a nomber is not entered
+  } else if (playerNum > max || playerNum < 1){
+    alert('Please enter a mumber between 1 and ' + max);
   } else {
     plays.push(playerNum); // adds nomber to players plays
   }
