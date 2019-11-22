@@ -45,8 +45,9 @@ for (var i = 0; minesList.length < 16 ; i++) {
 console.log('Mine list: ' + minesList);
 
 var plays = [];
+var won = false;
 for (var j = 0; plays.length < (max - 16); j++) {
-  var playerNum = parseInt(prompt('Enter a number between 1 and ' + max));
+  var playerNum = parseInt(prompt('Enter a number between 1 and ' + max + ' You already entered: ' + plays));
   if (minesList.includes(playerNum) || plays.includes(playerNum)){
     alert('GAME OVER! You hit a mine! You made ' + plays.length + ' correct moves. Press OK to restart.');
     // if mine is entered
@@ -56,6 +57,10 @@ for (var j = 0; plays.length < (max - 16); j++) {
     alert('Please enter a number'); // if a nomber is not entered
   } else if (playerNum > max || playerNum < 1){
     alert('Please enter a mumber between 1 and ' + max);
+  } else if (plays.length == (max - 17)){
+    won = true;
+    window.location.reload()
+    break;
   } else {
     plays.push(playerNum); // adds nomber to players plays
   }
@@ -63,6 +68,9 @@ for (var j = 0; plays.length < (max - 16); j++) {
 console.log('You number list: ' + plays);
 console.log('You made ' + plays.length + ' correct moves');
 
+if(won == true) {
+  alert('You won and made ' + (plays.length + 1) + ' correct moves');
+}
 
 // generate random numbers
 function randomNum(min, max) {
